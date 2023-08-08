@@ -4,7 +4,6 @@ import styles from './style';
 import AbCampoTexto from '../Inputs';
 import AbBotao from '../Botao';
 
-
 export default function TelaLogin() {
   return (
     <ImageBackground source={require('../../assets/background.jpg')} style={{height: "100%"}}>
