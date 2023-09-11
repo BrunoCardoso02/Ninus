@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
         height: 45, 
         width: "85%", 
         borderRadius: 7,
-        hadowColor: '#000', 
+        shadowColor: '#000', 
         shadowOffset: { width: 2, height: 6 }, 
         shadowOpacity: 0.4, 
         shadowRadius: 4,
