@@ -26,6 +26,9 @@ const style = StyleSheet.create({
         fontSize: 20,
         fontWeight: "bold"
     },
+    buttonText: {
+        color: "#FF0000"
+    },
     descricaoAula: {
         color: "#fff"
     },

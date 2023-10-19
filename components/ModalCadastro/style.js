@@ -36,38 +36,6 @@ const styles = StyleSheet.create({
         width: width * 0.75,
         paddingHorizontal: 10,
       },
-      radioButtonContainer: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-      },
-      radioButton: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        marginRight: width * 0.05,
-      },
-      radioButtonInner: {
-        width: 20,
-        height: 20,
-        borderRadius: 10,
-        borderWidth: 2,
-        borderColor: '#FFE7D0',
-        justifyContent: 'center',
-        alignItems: 'center',
-      },
-      radioButtonSelectedInner: {
-        borderColor: '#FFE7D0',
-      },
-      radioButtonDot: {
-        width: 12,
-        height: 12,
-        borderRadius: 6,
-        backgroundColor: '#FFE7D0',
-      },
-      radioButtonLabel: {
-        fontSize: 16,
-        color: '#fff',
-        marginLeft: 8,
-      },
       submitButton: {
         marginTop: height * 0.05,
         paddingVertical: width * 0.03,
