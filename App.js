@@ -31,6 +31,7 @@ export default function App() {
         <Stack.Screen name="TelaPerfil" component={TelaPerfil} />
       </Stack.Navigator>
     </NavigationContainer>
+
   );
 }
 
