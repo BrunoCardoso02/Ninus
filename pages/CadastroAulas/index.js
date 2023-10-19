@@ -21,7 +21,7 @@ import ModalCadastro from '../../components/ModalCadastro';
 import axios from 'axios';
 import AulasContainer from '../../components/AulasContainer';
 import { NavigationContainer } from '@react-navigation/native';
-
+                                                              
 
 const { width, height } = Dimensions.get('window');
 
