@@ -20,13 +20,12 @@ function TabNavigator() {
   )
 }
 
-
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="TabNavigator" headerMode="none">
-        <Stack.Screen name="TabNavigator" component={TabNavigator} />
+      <Stack.Navigator initialRouteName="CadastroUsuario" headerMode="none">
         <Stack.Screen name="CadastroUsuario" component={CadastroUsuario} />
+        <Stack.Screen name="TabNavigator" component={TabNavigator} />
         <Stack.Screen name="TelaAulas" component={TelaAulas} />
         <Stack.Screen name="TelaPerfil" component={TelaPerfil} />
       </Stack.Navigator>

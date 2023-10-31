@@ -4,7 +4,7 @@ import styles from './styles';
 import AbCampoTexto from '../../components/Inputs/index';
 import AbBotao from '../../components/Botao';
 import Checkbox from 'expo-checkbox';
-import axios from 'axios';
+import api from '../../api/api';
 
 
 export default function CadastroUsuario() {
@@ -23,33 +23,23 @@ export default function CadastroUsuario() {
         setEscolaParticular(!escolaParticular)
     }
 
-        const dadosDoUsuario = {
-            escolaPublica: escolaPublica ? 'CEI_ESTADUAL' : null, 
-            escolaParticular: escolaParticular ? 'CEI_PRIVADO' : null, 
-          };
-    
+    const dadosDoUsuario = {
+        escolaPublica: escolaPublica ? 'CEI_ESTADUAL' : null,
+        escolaParticular: escolaParticular ? 'CEI_PRIVADO' : null,
+    };
+
 
     const dadosUsuario = {
         nome: name,
         email: email,
         password: password,
-        dadosDoUsuario: dadosDoUsuario
+        school_type: dadosDoUsuario
     }
 
     const signUpUsuario = () => {
-
-        axios.post('http://localhost:8080/api/v1/client', dadosUsuario )
-        .then((response) => {
-            if (response.data.success) {
-              alert("Aula criada com êxito");
-              navigation.navigate('TelaAulas');
-            } else {
-              alert("Erro ao criar aula. Tente novamente mais tarde.");
-            }
-          })
-          .catch((error) => {
-            console.error("Erro ao enviar dados para a API: ", error);
-          });
+        api.post('/client', dadosUsuario)
+            .then(() => alert('Usuario Cadastrado'))
+            .catch((err) => alert(err))
     }
 
     return (
@@ -60,28 +50,28 @@ export default function CadastroUsuario() {
                     <Text style={styles.textoSaudacoes}>Olá! Seja bem-vindo</Text>
                 </View>
                 <ScrollView>
-                <View>
-                    <Text style={styles.textoTitulo}>Registrar</Text>
-                    <AbCampoTexto placeholder='Nome' value={name} onValueChange={(text) => setName(text)} />
-                    <AbCampoTexto placeholder='Email' value={email} onValueChange={(text) => setEmail(text)}  />
-                    <AbCampoTexto placeholder='Senha' value={password} onValueChange={(text) => setPassword(text)}  />
-                    <View style={styles.containerFormulario}>
-                        <View style={styles.containerCheckbox}>
-                            <Checkbox
-                                onValueChange={alterarValorEscolaPublica}
-                                value={escolaPublica}
-                                color={"orange"}
-                                 />
-                            <Text style={styles.checkBoxOptions}>Escola particular</Text>
-                            <Checkbox
-                                onValueChange={alterarValorParticular}
-                                value={escolaParticular}
-                                color={"orange"} />
-                            <Text style={styles.checkBoxOptions}>Escola publica</Text>
+                    <View>
+                        <Text style={styles.textoTitulo}>Registrar</Text>
+                        <AbCampoTexto placeholder='Nome' value={name} onValueChange={(text) => setName(text)} />
+                        <AbCampoTexto placeholder='Email' value={email} onValueChange={(text) => setEmail(text)} />
+                        <AbCampoTexto placeholder='Senha' value={password} onValueChange={(text) => setPassword(text)} />
+                        <View style={styles.containerFormulario}>
+                            <View style={styles.containerCheckbox}>
+                                <Checkbox
+                                    onValueChange={alterarValorEscolaPublica}
+                                    value={escolaPublica}
+                                    color={"orange"}
+                                />
+                                <Text style={styles.checkBoxOptions}>Escola particular</Text>
+                                <Checkbox
+                                    onValueChange={alterarValorParticular}
+                                    value={escolaParticular}
+                                    color={"orange"} />
+                                <Text style={styles.checkBoxOptions}>Escola publica</Text>
+                            </View>
                         </View>
+                        <AbBotao titulo='Registrar' onPress={signUpUsuario} />
                     </View>
-                    <AbBotao titulo='Registrar' onPress={signUpUsuario}/>   
-                </View>
                 </ScrollView>
             </View>
         </ImageBackground>
