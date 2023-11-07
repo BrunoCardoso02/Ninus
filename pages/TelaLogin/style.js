@@ -32,7 +32,10 @@ const styles = StyleSheet.create({
         textAlign: "center", 
     },
     textoLink: {
-        textDecorationLine: "underline", color: "#FF4500"
+        textDecorationLine: "underline",
+        color: "#F4A460",
+        fontSize: 16,
+        fontFamily: 'Arial'
     }
 
 })

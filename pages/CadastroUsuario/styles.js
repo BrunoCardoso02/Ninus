@@ -40,6 +40,17 @@ const styles = StyleSheet.create({
     checkBoxOptions: {
       color: "#F4A460", 
       fontWeight: 'bold'
+    },
+    linkToSignIn: {
+      marginHorizontal: 30,
+      marginTop: 20,
+      color: "#F4A460"
+    },
+    textLinkToSignIn: {
+      color: "#F4A460",
+      textDecorationLine: 'underline',
+      fontSize: 16, 
+      fontFamily: "Arial"
     }
 })
 

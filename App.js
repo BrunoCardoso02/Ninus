@@ -1,3 +1,4 @@
+import 'react-native-gesture-handler';
 import React from 'react';
 import TelaAulas from './pages/CadastroAulas/index.js';
 import CadastroUsuario from './pages/CadastroUsuario/index.js';
@@ -5,6 +6,7 @@ import TelaPerfil from './pages/Perfil/index.js';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import TelaLogin from './pages/TelaLogin/index.js';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -28,6 +30,8 @@ export default function App() {
         <Stack.Screen name="TabNavigator" component={TabNavigator} />
         <Stack.Screen name="TelaAulas" component={TelaAulas} />
         <Stack.Screen name="TelaPerfil" component={TelaPerfil} />
+        <Stack.Screen name="TelaLogin" component={TelaLogin} />
+
       </Stack.Navigator>
     </NavigationContainer>
 

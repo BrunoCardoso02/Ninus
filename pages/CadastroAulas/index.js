@@ -78,8 +78,6 @@ export default function TelaAulas() {
           </View>
         </ScrollView>
       </KeyboardAvoidingView>
-
-
     </ImageBackground>
   );
 }

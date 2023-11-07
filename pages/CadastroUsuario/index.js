@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { View, Text, ImageBackground, ScrollView } from 'react-native';
+import { View, Text, ImageBackground, ScrollView, Pressable, TouchableOpacity } from 'react-native';
 import styles from './styles';
 import AbCampoTexto from '../../components/Inputs/index';
 import AbBotao from '../../components/Botao';
 import Checkbox from 'expo-checkbox';
 import api from '../../api/api';
-
+import { useNavigation } from '@react-navigation/native'; // Importe useNavigation aqui
+import axios from 'axios';
 
 export default function CadastroUsuario() {
     const [name, setName] = useState('');
@@ -13,6 +14,8 @@ export default function CadastroUsuario() {
     const [password, setPassword] = useState('');
     const [escolaPublica, setEscolaPublica] = useState(false);
     const [escolaParticular, setEscolaParticular] = useState(false);
+
+    const navigation = useNavigation(); // Mova a chamada useNavigation aqui
 
     function alterarValorEscolaPublica() {
         setEscolaParticular(false)
@@ -27,34 +30,39 @@ export default function CadastroUsuario() {
         escolaPublica: escolaPublica ? 'CEI_ESTADUAL' : null,
         escolaParticular: escolaParticular ? 'CEI_PRIVADO' : null,
     };
-
-
     const dadosUsuario = {
-        nome: name,
+        name: name,
         email: email,
         password: password,
-        school_type: dadosDoUsuario
+        school_type: 'CEI_PRIVADO'
     }
-
-    const signUpUsuario = () => {
-        api.post('/client', dadosUsuario)
-            .then(() => alert('Usuario Cadastrado'))
-            .catch((err) => alert(err))
+    function signUpUsuario() {
+        const url = 'http://192.168.15.19:8080/api/v1/client';
+        fetch(url, {
+            method: 'POST',
+            body: JSON.stringify(dadosUsuario),
+            headers: {
+                'Content-Type': 'application/json; charset=utf-8'
+            }
+          })
+            .then(() => console.log("Cadastrou"))
+            .catch((err) => alert(err));
     }
-
+    function redirecionarLogin(){
+        navigation.navigate('TelaLogin')
+    }
     return (
         <ImageBackground source={require('../../assets/background.jpg')} style={{ height: "100%" }}>
             <View style={styles.container}>
-
                 <View style={styles.containerTitulo}>
                     <Text style={styles.textoSaudacoes}>Olá! Seja bem-vindo</Text>
                 </View>
                 <ScrollView>
                     <View>
                         <Text style={styles.textoTitulo}>Registrar</Text>
-                        <AbCampoTexto placeholder='Nome' value={name} onValueChange={(text) => setName(text)} />
-                        <AbCampoTexto placeholder='Email' value={email} onValueChange={(text) => setEmail(text)} />
-                        <AbCampoTexto placeholder='Senha' value={password} onValueChange={(text) => setPassword(text)} />
+                        <AbCampoTexto placeholder='Nome' value={name} onChangeText={(text) => setName(text)} />
+                        <AbCampoTexto placeholder='Email' value={email} onChangeText={(text) => setEmail(text)} />
+                        <AbCampoTexto placeholder='Senha' value={password} onChangeText={(text) => setPassword(text)} />
                         <View style={styles.containerFormulario}>
                             <View style={styles.containerCheckbox}>
                                 <Checkbox
@@ -71,6 +79,9 @@ export default function CadastroUsuario() {
                             </View>
                         </View>
                         <AbBotao titulo='Registrar' onPress={signUpUsuario} />
+                        <Pressable style={styles.linkToSignIn} onPress={redirecionarLogin} >
+                            <Text style={styles.textLinkToSignIn}>Já possui uma conta?</Text>
+                        </Pressable>
                     </View>
                 </ScrollView>
             </View>
