@@ -29,6 +29,16 @@ const style = StyleSheet.create({
     textoSubTitulo: {
         fontSize: 18,
         marginTop: 10
+    },
+
+    nome: {
+        fontSize: 20,
+        fontWeight: "bold",
+        marginTop: 20
+    },
+
+    voltar: {
+        fontSize: 40
     }
 
 })
