@@ -38,7 +38,9 @@ const style = StyleSheet.create({
     },
 
     voltar: {
-        fontSize: 40
+        fontSize: 40,
+        marginLeft: 20,
+        marginTop: 40
     }
 
 })

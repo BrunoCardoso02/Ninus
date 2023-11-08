@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
     },
 
     voltar: {
-        fontSize: 40
+        fontSize: 40,
     },
 
     title: {

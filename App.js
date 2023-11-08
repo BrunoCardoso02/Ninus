@@ -8,6 +8,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import TelaLogin from './pages/TelaLogin/index.js';
 import EditarPerfil from './pages/EditarPerfil/index.js';
+import Infografico from './pages/InfoGrafico/index.js';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -26,13 +27,14 @@ function TabNavigator() {
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="EditarPerfil" headerMode="none">
+      <Stack.Navigator initialRouteName="Infografico" headerMode="none">
         <Stack.Screen name="CadastroUsuario" component={CadastroUsuario} />
         <Stack.Screen name="TabNavigator" component={TabNavigator} />
         <Stack.Screen name="TelaAulas" component={TelaAulas} />
         <Stack.Screen name="TelaPerfil" component={TelaPerfil} />
         <Stack.Screen name="TelaLogin" component={TelaLogin} />
         <Stack.Screen name="EditarPerfil" component={EditarPerfil} />
+        <Stack.Screen name="Infografico" component={Infografico} />
       </Stack.Navigator>
     </NavigationContainer>
 

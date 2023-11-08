@@ -25,7 +25,7 @@ import { NavigationContainer } from '@react-navigation/native';
 
 const { width, height } = Dimensions.get('window');
 
-export default function TelaAulas() {
+export default function TelaAulas({ navigation }) {
   const [isOpen, setIsOpen] = useState(false);
   const [showNoClassesMessage, setShowNoClassesMessage] = useState(true);
 
@@ -33,13 +33,19 @@ export default function TelaAulas() {
     setIsOpen(!isOpen);
   };
 
+  const irTelaPerfil = () => {
+    navigation.navigate("TelaPerfil")
+  }
+
   return (
     <ImageBackground
       source={require('../../assets/background2.jpg')}
       style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.title}>Aulas de Hoje</Text>
-        <FontAwesome name="user-circle-o" size={width * 0.1} color="white" />
+        <TouchableOpacity onPress={irTelaPerfil}>
+          <FontAwesome name="user-circle-o" size={width * 0.1} color="white" />
+        </TouchableOpacity>
       </View>
 
       <KeyboardAvoidingView style={{ flex: 1 }} behavior="padding">

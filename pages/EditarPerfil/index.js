@@ -16,6 +16,19 @@ export default function EditarPerfil({ navigation }) {
     const[telefone, setTelefone] = useState("");
     const[email, setEmail] = useState("");
 
+    const salvar = () => {
+        const dados = { nome, sobrenome, telefone, email}
+        api
+            .post("", dados)
+            .then( (response) => {
+                alert("Dados alterados com sucesso!");
+            })
+            .catch( (err) => {
+                alert("Erro ao realizar mudanças");
+            })
+
+    }
+
     const voltarTela = () => {
         navigation.navigate("TelaPerfil")
     }

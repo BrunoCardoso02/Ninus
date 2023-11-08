@@ -16,11 +16,14 @@ export default function TelaPerfil({ navigation }) {
     }
     return(
         <ImageBackground source={require('../../assets/background2.jpg')} style={style.container}>
-            <View style={style.conteudo}>
+            <View>
                 <TouchableOpacity onPress={voltarTela}>
                     <Ionicons name="chevron-back" color={"white"} style={style.voltar}/>
                 </TouchableOpacity>
-                <Text style={style.titulo}>Tela de Perfil</Text>
+            </View>
+                     
+            <View style={style.conteudo}>
+                {/* <Text style={style.titulo}>Tela de Perfil</Text> */}
                 <Image source={require('../../assets/imagemPerfil.png')} style={style.fotoPerfil}/>
                 <TouchableOpacity onPress={navegar}>
                     <Text style={style.nome}>{nome}Marcos</Text>
