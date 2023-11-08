@@ -8,6 +8,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import axios from 'axios';
 import {AuthContext} from '../../Context/AuthContext'
+import api from '../../api/api';
 
 export default function TelaLogin() {
   const [email, setEmail] = useState('leonardin.plusoft@teste.com');
@@ -23,8 +24,7 @@ export default function TelaLogin() {
   }
 
   function SignIn() {
-    const url = 'http://192.168.15.19:8080/api/v1/login';
-    axios.post(url, dados)
+    api.post('/login', dados)
       .then((res) => {
         const token = res.data.token;
         const id = res.data.accountId;

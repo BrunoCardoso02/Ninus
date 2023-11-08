@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import {
   View,
   Text,
@@ -13,6 +13,7 @@ import {
   KeyboardAvoidingView,
 } from 'react-native';
 
+import { ModalContext } from '../../Context/ModalContext';
 import styles from './style';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import AntDesign from 'react-native-vector-icons/AntDesign';
@@ -21,16 +22,21 @@ import ModalCadastro from '../../components/ModalCadastro';
 import axios from 'axios';
 import AulasContainer from '../../components/AulasContainer';
 import { NavigationContainer } from '@react-navigation/native';
-                                                              
+import TabNavigator from '../../App';
+
 
 const { width, height } = Dimensions.get('window');
 
 export default function TelaAulas() {
+
   const [isOpen, setIsOpen] = useState(false);
   const [showNoClassesMessage, setShowNoClassesMessage] = useState(true);
+  const { visible, setVisible } = useContext(ModalContext)
 
   const controlarToggle = () => {
-    setIsOpen(!isOpen);
+    console.log(visible)
+    setVisible(!visible);
+
   };
 
   return (
@@ -39,7 +45,6 @@ export default function TelaAulas() {
       style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.title}>Aulas de Hoje</Text>
-        <FontAwesome name="user-circle-o" size={width * 0.1} color="white" />
       </View>
 
       <KeyboardAvoidingView style={{ flex: 1 }} behavior="padding">
@@ -64,20 +69,15 @@ export default function TelaAulas() {
         </TouchableOpacity>
 
         <ScrollView>
-          <View style={{ position: "relative", height: 480, width: "100%", }} >
 
-            {isOpen && (
-              <ModalCadastro />
-            )}
-            {showNoClassesMessage && !isOpen && (
-              <View style={{ alignItems: "center", marginTop: 70 }}>
-                <AulasContainer/>
-              </View>
-            )}
-
+          <View style={{ alignItems: "center", marginTop: 70 }}>
+            <AulasContainer />
           </View>
+
+
         </ScrollView>
       </KeyboardAvoidingView>
+
     </ImageBackground>
   );
 }

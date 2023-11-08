@@ -7,11 +7,10 @@ import Checkbox from 'expo-checkbox';
 import api from '../../api/api';
 import { useNavigation } from '@react-navigation/native'; // Importe useNavigation aqui
 import axios from 'axios';
-
 export default function CadastroUsuario() {
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [name, setName] = useState('Leonardo');
+    const [email, setEmail] = useState('leonardin.plusoft@teste.com');
+    const [password, setPassword] = useState('Leonardoteste123');
     const [escolaPublica, setEscolaPublica] = useState(false);
     const [escolaParticular, setEscolaParticular] = useState(false);
 

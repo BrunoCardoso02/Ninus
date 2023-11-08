@@ -1,29 +1,39 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { SafeAreaView, ScrollView, FlatList, Text, Image } from 'react-native';
+import { SafeAreaView, ScrollView, FlatList, Text, Image, ImageBackground } from 'react-native';
 import axios from 'axios';
 import AulaItem from '../AulaItem';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import api from '../../api/api';
 import { AuthContext } from '../../Context/AuthContext';
+import { Modal, Portal, Button, PaperProvider } from 'react-native-paper';
+import { ModalContext } from '../../Context/ModalContext';
+import { TextInput } from 'react-native-gesture-handler';
+import styles from './style';
 
 export default function AulasContainer() {
   const [aulas, setAulas] = useState([]);
   const [temAula, setTemAula] = useState(false);
-  const {token, id} = useContext(AuthContext)
+  const { token, id } = useContext(AuthContext);
+
+  const {visible, setVisible} = useContext(ModalContext)
+
+  const showModal = () => setVisible(true);
+  const hideModal = () => setVisible(false);
+  const containerStyle = { backgroundColor: '#F4A460', height: 100, margin: 10, width: "70%", alignItems: "center" };
 
   useEffect(() => {
-    function exibirAula(){
+    function exibirAula() {
       api.get(`/feed/class/progress/${id}`, {
         headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
           'Authorization': `Bearer ${token}`
         }
       })
         .then(response => {
-          const dadosDaAPI = response.data.class_name;
+          const dadosDaAPI = response.data;
           console.log(dadosDaAPI)
           setAulas(dadosDaAPI);
-          setTemAula(aulasDaAPI.length > 0);
-
         })
         .catch(error => {
           alert('Erro na requisição GET:' + error);
@@ -48,22 +58,32 @@ export default function AulasContainer() {
 
   return (
     <SafeAreaView>
-      <ScrollView>
         {temAula ? (
           <FlatList
             data={aulas}
             renderItem={({ item }) => (
               <AulaItem item={item} onDeleteItem={handleDelete} />
+
             )}
             keyExtractor={(item) => item.id.toString()}
           />
         ) : (
           <>
-            <Image source={require('../../assets/logo2.jpg')} style={{height: 250, width: 250}}/>
-            <Text style={{textAlign: "center"}}>Não há aulas disponíveis.</Text>
+            <PaperProvider>
+              <Portal>
+                <Modal visible={visible} onDismiss={hideModal} contentContainerStyle={containerStyle}>
+                  <Text>Example Modal.  Click outside this area to dismiss.</Text>
+
+                  <Button>Olá mundo</Button>
+                  <TextInput style={styles.inputModal}/>
+                </Modal>
+              </Portal>
+              <Button style={{ width: 500, height: 600,alignItems: "center",  }}>
+                <Text>Ola</Text>
+              </Button>
+            </PaperProvider>
           </>
         )}
-      </ScrollView>
     </SafeAreaView>
   );
 }
