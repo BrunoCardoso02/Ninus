@@ -7,6 +7,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import TelaLogin from './pages/TelaLogin/index.js';
+import AuthProvider from './Context/AuthContext.js';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -25,14 +26,15 @@ function TabNavigator() {
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="CadastroUsuario" headerMode="none">
-        <Stack.Screen name="CadastroUsuario" component={CadastroUsuario} />
-        <Stack.Screen name="TabNavigator" component={TabNavigator} />
-        <Stack.Screen name="TelaAulas" component={TelaAulas} />
-        <Stack.Screen name="TelaPerfil" component={TelaPerfil} />
-        <Stack.Screen name="TelaLogin" component={TelaLogin} />
-
-      </Stack.Navigator>
+      <AuthProvider>
+        <Stack.Navigator initialRouteName="CadastroUsuario" headerMode="none">
+          <Stack.Screen name="CadastroUsuario" component={CadastroUsuario} />
+          <Stack.Screen name="TabNavigator" component={TabNavigator} />
+          <Stack.Screen name="TelaAulas" component={TelaAulas} />
+          <Stack.Screen name="TelaPerfil" component={TelaPerfil} />
+          <Stack.Screen name="TelaLogin" component={TelaLogin} />
+        </Stack.Navigator>
+      </AuthProvider>
     </NavigationContainer>
 
   );

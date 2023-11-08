@@ -1,38 +1,38 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {View, Text, TextInput, TouchableOpacity} from 'react-native';
 import styles from "./style";
-import axios from "axios";
+import api from "../../api/api";
+import { useContext } from "react";
+import { AuthContext } from "../../Context/AuthContext";
+
 
 export default function ModalCadastro(){
-  const [inputDisciplina, setInputDisciplina] = useState(""); 
   const [inputResumo, setInputResumo] = useState(""); 
+  const {token, id} = useContext(AuthContext);
+  useEffect(() => {
+    console.log(token, id)
+  }, [])
 
-    const criarAula = () => {
+    function criarAula() {
         const dadosAula = {
-          disciplina: inputDisciplina,
-          resumo: inputResumo,
-        };
-    
-        const apiUrl = "http://localhost:8080/api/v1/class";
-    
-        axios.post(apiUrl, dadosAula)
-          .then((response) => {
-            if (response.data.success) {
-              alert("Aula criada com êxito");
-            } else {
-              alert("Erro ao criar aula. Tente novamente mais tarde.");
-            }
+          client_id: id,
+          class_name: inputResumo
+        };   
+        api.post('/class', dadosAula, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          }
+        })
+          .then((res) => {
+            console.log("Aula criada", res.data.class_name)
           })
           .catch((error) => {
-            alert("Erro ao enviar dados para a API: " + error);
+            alert("Erro ao enviar dados para a API: " + error.message);
           });
       };
     return(
         <View style={styles.menu}>
         <Text style={styles.titleMenu}>Crie suas aulas!</Text>
-        <Text style={styles.label}>Qual é sua disciplina?</Text>
-        <TextInput style={styles.input} value={inputDisciplina} onChangeText={(text) => setInputDisciplina(text)} />
-
         <Text style={styles.label}>Faça um breve resumo sobre a aula:</Text>
         <TextInput style={styles.input} value={inputResumo} onChangeText={(text) => setInputResumo(text)} />
           <TouchableOpacity style={styles.submitButton} onPress={criarAula}>
