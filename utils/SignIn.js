@@ -8,8 +8,6 @@ export const signIn = async (email, senha, setToken, setId, navigation) => {
     password: senha
   };
 
-  
-
   try {
     const res = await api.post(dados);
     const token = res.data.token;

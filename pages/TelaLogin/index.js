@@ -11,8 +11,6 @@ import {AuthContext} from '../../Context/AuthContext'
 import TabBar from '../../components/TabBar';
 import { signIn } from '../../utils/SignIn';
 
-//'brunoteste@testando.com'
-//'Teste321'
 
 export default function TelaLogin() {
   const [email, setEmail] = useState("");
@@ -31,9 +29,7 @@ export default function TelaLogin() {
     navigation.navigate('CadastroUsuario')
   }
 
-
   return (
-
     <ImageBackground source={require('../../assets/background.jpg')} style={{ height: "100%" }}>
       <ScrollView>
         <View style={styles.container}>

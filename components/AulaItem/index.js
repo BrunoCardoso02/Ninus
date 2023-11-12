@@ -6,8 +6,6 @@ import { AulaContext } from '../../Context/AulaContext.js';
 import { AuthContext } from '../../Context/AuthContext.js';
 
 
-
-
 export default function AulaItem({ item }) {
     const {idAula} = useContext(AulaContext);
     const {token} = useContext(AuthContext)
@@ -24,7 +22,6 @@ export default function AulaItem({ item }) {
         .catch((err) => console.log("Ocorreu um erro", err))
     }
 
-    
 
     return (
         <View style={style.containerGeral}>

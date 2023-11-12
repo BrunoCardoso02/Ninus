@@ -91,46 +91,6 @@ export default function Infografico() {
                     })}
 
                 </View>
-                {/*<View>
-                    <Text style={styles.tituloAula}>Aula de Geografia</Text>
-                    <ScrollView
-                        horizontal
-                        pagingEnabled
-                        showsHorizontalScrollIndicator={false}
-                        style={styles.containerGrafico}
-                    >
-                        <View style={styles.containerGrafico}>
-                            <View style={styles.graficoIntroducao}>
-                                <Text style={styles.tituloRecurso}>Introdução</Text>
-                                <Text style={styles.conteudoRecurso}>Lorem ipsum dolor sit amet. Nam molestias nihil qui tempora tempore est dignissimos magnam sed incidunt dolore sit facere rerum. Et velit quae in dolorem ipsum et impedit similique quo veniam nostrum. Et officia repellendus et reprehenderit ratione id omnis mollitia qui galisum asperiores. Ut unde temporibus rem rerum repudiandae est excepturi tempore aut dolorem nihil eum maiores placeat At quasi asperiores?</Text>
-                            </View>
-                            <View style={styles.graficoRecursos}>
-                                <Text style={styles.tituloRecurso}>Recursos</Text>
-                                <Text style={styles.conteudoRecurso}>Lorem ipsum dolor sit amet. Nam molestias nihil qui tempora tempore est dignissimos magnam sed incidunt dolore sit facere rerum. Et velit quae in dolorem ipsum et impedit similique quo veniam nostrum. Et officia repellendus et reprehenderit ratione id omnis mollitia qui galisum asperiores. Ut unde temporibus rem rerum repudiandae est excepturi tempore aut dolorem nihil eum maiores placeat At quasi asperiores?</Text>
-                            </View>
-                            <View style={styles.graficoDesenvolvimento}>
-                                <Text style={styles.tituloRecurso}>Desenvolvimento da aula</Text>
-                                <Text style={styles.conteudoRecurso}>Lorem ipsum dolor sit amet. Nam molestias nihil qui tempora tempore est dignissimos magnam sed incidunt dolore sit facere rerum. Et velit quae in dolorem ipsum et impedit similique quo veniam nostrum. Et officia repellendus et reprehenderit ratione id omnis mollitia qui galisum asperiores. Ut unde temporibus rem rerum repudiandae est excepturi tempore aut dolorem nihil eum maiores placeat At quasi asperiores?</Text>
-                            </View>
-                            <View style={styles.graficoObjetivoDeAprendizado}>
-                                <Text style={styles.tituloRecurso}>Adaptações</Text>
-                                <Text style={styles.conteudoRecurso}>Lorem ipsum dolor sit amet. Nam molestias nihil qui tempora tempore est dignissimos magnam sed incidunt dolore sit facere rerum. Et velit quae in dolorem ipsum et impedit similique quo veniam nostrum. Et officia repellendus et reprehenderit ratione id omnis mollitia qui galisum asperiores. Ut unde temporibus rem rerum repudiandae est excepturi tempore aut dolorem nihil eum maiores placeat At quasi asperiores?</Text>
-                            </View>
-                            <View style={styles.graficoContextoDaAula}>
-                                <Text style={styles.tituloRecurso}>Contexto da Aula</Text>
-                                <Text style={styles.conteudoRecurso}>Lorem ipsum dolor sit amet. Nam molestias nihil qui tempora tempore est dignissimos magnam sed incidunt dolore sit facere rerum. Et velit quae in dolorem ipsum et impedit similique quo veniam nostrum. Et officia repellendus et reprehenderit ratione id omnis mollitia qui galisum asperiores. Ut unde temporibus rem rerum repudiandae est excepturi tempore aut dolorem nihil eum maiores placeat At quasi asperiores?</Text>
-                            </View>
-                            <View style={styles.graficoObjetivoDaAula}>
-                                <Text style={styles.tituloRecurso}>Objetivo da Aula</Text>
-                                <Text style={styles.conteudoRecurso}>Lorem ipsum dolor sit amet. Nam molestias nihil qui tempora tempore est dignissimos magnam sed incidunt dolore sit facere rerum. Et velit quae in dolorem ipsum et impedit similique quo veniam nostrum. Et officia repellendus et reprehenderit ratione id omnis mollitia qui galisum asperiores. Ut unde temporibus rem rerum repudiandae est excepturi tempore aut dolorem nihil eum maiores placeat At quasi asperiores?</Text>
-                            </View>
-                            <View style={styles.graficoConclusao}>
-                                <Text style={styles.tituloRecurso}>Conclusão</Text>
-                                <Text style={styles.conteudoRecurso}>Lorem ipsum dolor sit amet. Nam molestias nihil qui tempora tempore est dignissimos magnam sed incidunt dolore sit facere rerum. Et velit quae in dolorem ipsum et impedit similique quo veniam nostrum. Et officia repellendus et reprehenderit ratione id omnis mollitia qui galisum asperiores. Ut unde temporibus rem rerum repudiandae est excepturi tempore aut dolorem nihil eum maiores placeat At quasi asperiores?</Text>
-                            </View>
-                        </View>
-                    </ScrollView>
-                </View>*/}
             </ScrollView>
             <TabBar />
         </ImageBackground>
