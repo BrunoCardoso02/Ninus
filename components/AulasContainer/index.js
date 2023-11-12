@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { SafeAreaView, ScrollView, Text, TextInput } from 'react-native';
+import { SafeAreaView, ScrollView, Text, TextInput, ImageBackground } from 'react-native';
 import axios from 'axios';
 import AulaItem from '../AulaItem';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -49,18 +49,6 @@ export default function AulasContainer() {
             <ImageBackground source={require('../../assets/logo2.jpg')} style={{ height: 250, width: 250 }}>
               <Text style={{ textAlign: "center", color: 'white' }}>Não há aulas disponíveis.</Text>
             </ImageBackground>
-            <PaperProvider>
-              <Portal>
-                <Modal visible={visible} onDismiss={hideModal} contentContainerStyle={containerStyle}>
-                  <Text>Example Modal. Click outside this area to dismiss.</Text>
-                  <Button>Olá mundo</Button>
-                  <TextInput style={styles.inputModal} />
-                </Modal>
-              </Portal>
-              <Button style={{ width: 500, height: 600, alignItems: "center" }}>
-                <Text>Ola</Text>
-              </Button>
-            </PaperProvider>
           </>
         )}
       </ScrollView>

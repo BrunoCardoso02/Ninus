@@ -9,7 +9,11 @@ export const signIn = async (email, senha, setToken, setId, navigation) => {
   };
 
   try {
-    const res = await api.post(dados);
+    const res = await api.post('/login', dados, {
+      headers: {
+        'Content-Type': 'application/json; charset=utf-8'
+      }
+    });
     const token = res.data.token;
     const id = res.data.accountId;
 

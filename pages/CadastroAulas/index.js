@@ -22,13 +22,7 @@ import ModalCadastro from '../../components/ModalCadastro';
 import axios from 'axios';
 import AulasContainer from '../../components/AulasContainer';
 import { NavigationContainer } from '@react-navigation/native';
-<<<<<<< HEAD
-import TabNavigator from '../../App';
-
-=======
 import TabBar from '../../components/TabBar';
-                                                              
->>>>>>> cabe177b
 
 const { width, height } = Dimensions.get('window');
 
@@ -41,7 +35,6 @@ export default function TelaAulas() {
   const controlarToggle = () => {
     console.log(visible)
     setVisible(!visible);
-
   };
 
   return (
@@ -82,11 +75,9 @@ export default function TelaAulas() {
 
         </ScrollView>
       </KeyboardAvoidingView>
-<<<<<<< HEAD
 
-=======
-      <TabBar/>
->>>>>>> cabe177b
+
+
     </ImageBackground>
   );
 }

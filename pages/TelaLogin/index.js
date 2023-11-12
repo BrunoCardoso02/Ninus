@@ -8,8 +8,8 @@ import { AuthContext } from '../../Context/AuthContext';
 import { signIn } from '../../utils/SignIn';
 
 export default function TelaLogin() {
-  const [email, setEmail] = useState("");
-  const [senha, setSenha] = useState("");
+  const [email, setEmail] = useState("brunotestandoap@plusoft.com");
+  const [senha, setSenha] = useState("Testandoapp12");
 
   const { setToken, setId } = useContext(AuthContext);
   const navigation = useNavigation();

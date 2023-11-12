@@ -11,6 +11,8 @@ import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
 import AuthProvider from './Context/AuthContext.js';
 import TabBarProvider from './Context/TabBarContext.js';
 import AulaProvider from './Context/AulaContext.js';
+import TelaLogin from './pages/TelaLogin/index.js';
+
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -28,6 +30,7 @@ function TabNavigator() {
       }}
     >
       <Tab.Screen name="TelaAulas" component={TelaAulas} options={screenOptions} />
+      <Tab.Screen name="Infografico" component={Infografico} options={screenOptions} />
       <Tab.Screen name="TelaPerfil" component={TelaPerfil} options={screenOptions} />
     </Tab.Navigator>
   );

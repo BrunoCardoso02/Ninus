@@ -11,11 +11,6 @@ export default function ModalCadastro() {
   const [className, setClassName] = useState("");
   const { token, id } = useContext(AuthContext);
 
-  // Modal
-  const { visible, setVisible } = useContext(ModalContext);
-  const showModal = () => setVisible(true);
-  const hideModal = () => setVisible(false);
-  const containerStyle = { backgroundColor: 'black', padding: 20 };
 
   useEffect(() => {
     console.log(token, id)
@@ -53,15 +48,6 @@ export default function ModalCadastro() {
           <Text style={styles.submitButtonText}>Enviar</Text>
         </TouchableOpacity>
 
-        <PaperProvider>
-          <Portal>
-            <Modal visible={visible} onDismiss={hideModal} contentContainerStyle={containerStyle}>
-              <Text>Exemplo de Modal. Clique fora desta área para fechar.</Text>
-              <Button>Olá mundo</Button>
-              <TextInput style={styles.inputModal} />
-            </Modal>
-          </Portal>
-        </PaperProvider>
       </View>
     </ScrollView>
   );

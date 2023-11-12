@@ -7,11 +7,12 @@ import Checkbox from 'expo-checkbox';
 import api from '../../api/api';
 import { useNavigation } from '@react-navigation/native';
 import { AuthContext } from '../../Context/AuthContext';
+import { signIn } from '../../utils/SignIn';
 
 export default function CadastroUsuario() {
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [name, setName] = useState('brunoteste2');
+    const [email, setEmail] = useState('brunotestandoap@plusoft.com');
+    const [password, setPassword] = useState('Testandoapp12');
     const [escolaPublica, setEscolaPublica] = useState(false);
     const [escolaParticular, setEscolaParticular] = useState(false);
 
@@ -32,7 +33,7 @@ export default function CadastroUsuario() {
         name: name,
         email: email,
         password: password,
-        school_type: escolaParticular ? 'CEI_PRIVADO' : (escolaPublica ? 'CEI_ESTADUAL' : null)
+        school_type: 'CEI_PRIVADO' 
     };
 
     function signUpUsuario() {
@@ -43,8 +44,8 @@ export default function CadastroUsuario() {
         })
         .then(() => {
             console.log("Usuário cadastrado");
-            // Chame sua função de login aqui, usando axios ou outra forma que você preferir
-            // signIn(email, password, setToken, setId, navigation);
+            
+            signIn(email, password, setToken, setId, navigation);
         })
         .catch((err) => console.log(err.message))
     }

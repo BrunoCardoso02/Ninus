@@ -2,9 +2,7 @@ import { StyleSheet, Dimensions } from "react-native";
 const { width, height } = Dimensions.get('window');
 
 const styles = StyleSheet.create({
-<<<<<<< HEAD
-  
-=======
+
     menu: {
         backgroundColor: '#F6A75D',
         marginTop: 10,
@@ -54,7 +52,7 @@ const styles = StyleSheet.create({
         fontSize: width * 0.05,
         fontWeight: 'bold',
       },
->>>>>>> cabe177b
+
 })
 
 export default styles
