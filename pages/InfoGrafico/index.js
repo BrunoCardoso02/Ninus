@@ -24,16 +24,14 @@ export default function Infografico() {
     
                 const dadosInfoGrafico = res.data._embedded.modelInputClassDetailsList.map(item => item);
                 setAula(dadosInfoGrafico);
-    
-                console.log(dadosInfoGrafico)
-    
+        
             } catch (err) {
                 console.log( err);
             }
         }
     
         ExibirInfoGrafico();
-    }, []);
+    }, [aula]);
 
     return (
 
@@ -92,7 +90,6 @@ export default function Infografico() {
 
                 </View>
             </ScrollView>
-            <TabBar />
         </ImageBackground>
     )
 }
