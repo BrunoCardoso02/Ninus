@@ -1,68 +1,68 @@
-import { useEffect, useState } from "react";
-import { View, TextInput, TouchableOpacity } from 'react-native';
-import styles from "./style";
+import React, { useEffect, useState, useContext } from "react";
+import { View, TextInput, TouchableOpacity, Text } from 'react-native';
+import { Modal, Portal, Button, Provider as PaperProvider } from 'react-native-paper';
 import api from "../../api/api";
-import { useContext } from "react";
 import { AuthContext } from "../../Context/AuthContext";
-import { ScrollView } from "react-native-gesture-handler";
 import { ModalContext } from "../../Context/ModalContext";
-import { Modal, Portal, Button, PaperProvider, Text } from 'react-native-paper';
+import { ScrollView } from "react-native-gesture-handler";
+import styles from "./style";
 
 export default function ModalCadastro() {
   const [className, setClassName] = useState("");
   const { token, id } = useContext(AuthContext);
-  useEffect(() => {
-    console.log(token, id)
-  }, [])
 
-  //Modal 
+  // Modal
   const { visible, setVisible } = useContext(ModalContext);
-
   const showModal = () => setVisible(true);
   const hideModal = () => setVisible(false);
   const containerStyle = { backgroundColor: 'black', padding: 20 };
 
+  useEffect(() => {
+    console.log(token, id)
+  }, []);
+
   function criarAula() {
     const dadosAula = {
       client_id: id,
-      class_name: inputResumo
+      class_name: className
     };
     api.post('/class', dadosAula, {
       headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
         Authorization: `Bearer ${token}`,
       }
     })
       .then((res) => {
-        console.log("Aula criada", res.data.class_name)
+        console.log("Aula criada", res.data.class_name);
+        showModal();
       })
       .catch((error) => {
         alert("Erro ao enviar dados para a API: " + error.message);
       });
-  };
-
-  function criarAulaEspecifica() {
-    const dadosEspecificos = {
-      class_ninus_id: 1,
-      axle: "CONVIVER",
-      class_room: "Maternal 2",
-      didatic_resources: "brinquedos e livros.",
-      type_teaching: "Ensino Infântil",
-      learning_objective: "CRIANCAS_BEM_PEQUENAS",
-      class_theme: "Convivência entre as crianças",
-      class_objective: "Aula que ensine as crianças a conviverem entre si.",
-      fields_experience: "O eu, o outro e o nós",
-      duration_in_minutes: 50
-    }
-    api.post('/class/input', dadosEspecificos, {
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
-    })
-      .then((res) => console.log("Aula Cadastrada com sucesso"))
-      .catch((err) => console.log(err))
   }
-  return (
 
-    <></>
-  )
+  return (
+    <ScrollView>
+      <View style={styles.menu}>
+        <Text style={styles.titleMenu}>Crie suas aulas!</Text>
+
+        <Text style={styles.label}>Faça um breve resumo sobre a aula:</Text>
+        <TextInput style={styles.input} value={className} onChangeText={(text) => setClassName(text)} />
+        <TouchableOpacity style={styles.submitButton} onPress={criarAula}>
+          <Text style={styles.submitButtonText}>Enviar</Text>
+        </TouchableOpacity>
+
+        <PaperProvider>
+          <Portal>
+            <Modal visible={visible} onDismiss={hideModal} contentContainerStyle={containerStyle}>
+              <Text>Exemplo de Modal. Clique fora desta área para fechar.</Text>
+              <Button>Olá mundo</Button>
+              <TextInput style={styles.inputModal} />
+            </Modal>
+          </Portal>
+        </PaperProvider>
+      </View>
+    </ScrollView>
+  );
 }

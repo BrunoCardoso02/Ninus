@@ -13,7 +13,6 @@ const styles = StyleSheet.create({
     },
     texto: {
         color: '#fff',
-        fontFamily: "Arial",
         fontSize: 20
     },
 })
