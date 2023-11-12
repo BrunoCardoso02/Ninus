@@ -21,6 +21,7 @@ import ModalCadastro from '../../components/ModalCadastro';
 import axios from 'axios';
 import AulasContainer from '../../components/AulasContainer';
 import { NavigationContainer } from '@react-navigation/native';
+import TabBar from '../../components/TabBar';
                                                               
 
 const { width, height } = Dimensions.get('window');
@@ -78,6 +79,7 @@ export default function TelaAulas() {
           </View>
         </ScrollView>
       </KeyboardAvoidingView>
+      <TabBar/>
     </ImageBackground>
   );
 }

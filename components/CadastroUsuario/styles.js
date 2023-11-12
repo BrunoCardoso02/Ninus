@@ -13,7 +13,6 @@
       textoSaudacoes: {
         color: "orange", 
         fontSize: 24, 
-        fontFamily: "Arial"
       },
       textoTitulo: {
         color: "orange", 

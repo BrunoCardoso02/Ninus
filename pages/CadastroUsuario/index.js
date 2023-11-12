@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { View, Text, ImageBackground, ScrollView, Pressable, TouchableOpacity } from 'react-native';
 import styles from './styles';
 import AbCampoTexto from '../../components/Inputs/index';
@@ -7,15 +7,19 @@ import Checkbox from 'expo-checkbox';
 import api from '../../api/api';
 import { useNavigation } from '@react-navigation/native'; // Importe useNavigation aqui
 import axios from 'axios';
+import { signIn } from '../../utils/SignIn';
+import { AuthContext } from '../../Context/AuthContext';
 
-export default function CadastroUsuario() {
+export default function CadastroUsuario({SignIn}) {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [escolaPublica, setEscolaPublica] = useState(false);
     const [escolaParticular, setEscolaParticular] = useState(false);
 
-    const navigation = useNavigation(); // Mova a chamada useNavigation aqui
+    const navigation = useNavigation(); 
+
+    const {setToken, setId} = useContext(AuthContext)
 
     function alterarValorEscolaPublica() {
         setEscolaParticular(false)
@@ -25,7 +29,7 @@ export default function CadastroUsuario() {
         setEscolaPublica(false)
         setEscolaParticular(!escolaParticular)
     }
-
+    
     const dadosDoUsuario = {
         escolaPublica: escolaPublica ? 'CEI_ESTADUAL' : null,
         escolaParticular: escolaParticular ? 'CEI_PRIVADO' : null,
@@ -37,16 +41,17 @@ export default function CadastroUsuario() {
         school_type: 'CEI_PRIVADO'
     }
     function signUpUsuario() {
-        const url = 'http://192.168.15.19:8080/api/v1/client';
-        fetch(url, {
-            method: 'POST',
-            body: JSON.stringify(dadosUsuario),
+
+        api.post('/client', dadosUsuario, {
             headers: {
                 'Content-Type': 'application/json; charset=utf-8'
             }
-          })
-            .then(() => console.log("Cadastrou"))
-            .catch((err) => alert(err));
+        })
+        .then(() => {
+            console.log("Usuario cadastrado");
+            signIn(email, password, setToken, setId, navigation)
+        })
+        .catch((err) => console.log(err.message))
     }
     function redirecionarLogin(){
         navigation.navigate('TelaLogin')
@@ -62,7 +67,7 @@ export default function CadastroUsuario() {
                         <Text style={styles.textoTitulo}>Registrar</Text>
                         <AbCampoTexto placeholder='Nome' value={name} onChangeText={(text) => setName(text)} />
                         <AbCampoTexto placeholder='Email' value={email} onChangeText={(text) => setEmail(text)} />
-                        <AbCampoTexto placeholder='Senha' value={password} onChangeText={(text) => setPassword(text)} />
+                        <AbCampoTexto placeholder='Senha' criptografar={true} value={password} onChangeText={(text) => setPassword(text)} />
                         <View style={styles.containerFormulario}>
                             <View style={styles.containerCheckbox}>
                                 <Checkbox

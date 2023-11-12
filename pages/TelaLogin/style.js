@@ -9,12 +9,10 @@ const styles = StyleSheet.create({
     textoTitulo: {
         color: "orange", 
         fontSize: 40, 
-        fontFamily: "Arial"
     },
     textoSaudacoes: {
         color: "orange", 
         fontSize: 20, 
-        fontFamily: "Arial"
     },
     containerPrincipal: {
         padding: 20
@@ -27,7 +25,6 @@ const styles = StyleSheet.create({
     },
     textoCriarConta: {
         color: "#F4A460", 
-        fontFamily: "Arial", 
         padding: 30, 
         textAlign: "center", 
     },
@@ -35,7 +32,6 @@ const styles = StyleSheet.create({
         textDecorationLine: "underline",
         color: "#F4A460",
         fontSize: 16,
-        fontFamily: 'Arial'
     }
 
 })

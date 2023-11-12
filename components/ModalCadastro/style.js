@@ -13,6 +13,8 @@ const styles = StyleSheet.create({
         shadowOffset: { width: 2, height: 6 },
         shadowOpacity: 0.4,
         shadowRadius: 4,
+        display: "flex",
+        flexDirection: "column",
       },
       titleMenu: {
         color: '#fff',
@@ -35,9 +37,10 @@ const styles = StyleSheet.create({
         shadowRadius: 4,
         width: width * 0.75,
         paddingHorizontal: 10,
+        marginBottom: height * 0.025
       },
       submitButton: {
-        marginTop: height * 0.05,
+        marginBottom: height * 0.05,
         paddingVertical: width * 0.03,
         borderRadius: 10,
         alignItems: 'center',

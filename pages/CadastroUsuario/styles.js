@@ -13,7 +13,6 @@ const styles = StyleSheet.create({
     textoSaudacoes: {
       color: "orange", 
       fontSize: 24, 
-      fontFamily: "Arial"
     },
     textoTitulo: {
       color: "orange", 
@@ -50,7 +49,6 @@ const styles = StyleSheet.create({
       color: "#F4A460",
       textDecorationLine: 'underline',
       fontSize: 16, 
-      fontFamily: "Arial"
     }
 })
 
