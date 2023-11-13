@@ -90,6 +90,7 @@ export default function Infografico() {
 
                 </View>
             </ScrollView>
+            <TabBar/>
         </ImageBackground>
     )
 }

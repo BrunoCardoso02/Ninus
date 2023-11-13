@@ -11,6 +11,7 @@ import { Modal, Portal, Button, PaperProvider, Dialog, Avatar } from 'react-nati
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import AbCampoTexto from '../../components/Inputs';
 import Ionicons from "react-native-vector-icons/Ionicons"
+import { ScrollView } from 'react-native-gesture-handler';
 
 
 export default function TelaPerfil() {
@@ -50,14 +51,14 @@ export default function TelaPerfil() {
                 Authorization: `Bearer ${token}`
             }
                 .then(() => {
-                    console.log("Conta Excluida");
+                    navigation.navigate('TelaLogin')
                 })
                 .catch((err) => console.log(err))
         })
     }
 
     function alterarNickName() {
-        api.put(`/client?name=${novoNome}`, {
+        api.put(`/client/${id}?name=${novoNome}`, {
             headers: {
                 'Content-Type': 'application/json',
                 Accept: 'application/json',
@@ -65,10 +66,11 @@ export default function TelaPerfil() {
             }
         })
             .then(() => {
-                setNome(novoNome)
+                setNovoNome(novoNome)
                 hideModal()
+
             })
-            .catch((err) => console.log(err))
+            .catch((err) => console.log("Erro ao atualizar nome", err))
     }
 
     return (
@@ -97,7 +99,8 @@ export default function TelaPerfil() {
             </View>
             <Portal >
                 <Dialog visible={visibleModal} onDismiss={hideModal} style={style.modalEditar}>
-                    <Dialog.Content  >
+                    <ScrollView>
+                    <Dialog.Content>
                         <TextInput
                             style={style.input}
                             placeholder='Novo nickname'
@@ -108,6 +111,7 @@ export default function TelaPerfil() {
                             <Text style={style.textoBotaoEditar} onPress={alterarNickName}>Enviar</Text>
                         </TouchableOpacity>
                     </Dialog.Content>
+                    </ScrollView>
                 </Dialog>
             </Portal>
             <Portal>

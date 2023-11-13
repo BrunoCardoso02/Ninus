@@ -99,12 +99,6 @@ export default function ModalCadastro() {
       {showAdcionalInputs && (
         <ScrollView>
           <View style={styles.containerInputs}>
-            <Text style={styles.label}>Eixo</Text>
-            <TextInput
-              style={styles.input}
-              value={eixo}
-              onChangeText={(text) => setEixo(text)}
-            />
             <Text style={styles.label}>Turma</Text>
             <TextInput
               style={styles.input}
